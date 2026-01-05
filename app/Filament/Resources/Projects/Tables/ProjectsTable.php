@@ -1,37 +1,26 @@
 <?php
 
-namespace App\Filament\Resources\Experiences\Tables;
+namespace App\Filament\Resources\Projects\Tables;
 
-use App\Filament\Exports\ExperienceExporter;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Actions\ExportAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\TagsColumn;
 use Filament\Tables\Table;
 
-class ExperiencesTable
+class ProjectsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('position')
+                ImageColumn::make('image')
+                    ->disk('public')
+                    ->height(48),
+                TextColumn::make('title')
                     ->searchable(),
-                TextColumn::make('date_from')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('date_to')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('company_name')
-                    ->searchable(),
-                TagsColumn::make('technologies.title')
-                    ->label('Technologies')
-                    ->separator(', ')
-                    ->limit(3),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -47,10 +36,6 @@ class ExperiencesTable
             ->recordActions([
                 ViewAction::make(),
                 EditAction::make(),
-            ])
-            ->headerActions([
-                ExportAction::make()
-                    ->exporter(ExperienceExporter::class),
             ])
             ->toolbarActions([
                 BulkActionGroup::make([

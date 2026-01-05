@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Experiences\Schemas;
 
 use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\RepeatableEntry;
 use Filament\Schemas\Schema;
 
 class ExperienceInfolist
@@ -19,6 +20,12 @@ class ExperienceInfolist
                 TextEntry::make('date_to')
                     ->date(),
                 TextEntry::make('company_name'),
+                RepeatableEntry::make('technologies')
+                    ->label('Technologies')
+                    ->schema([
+                        TextEntry::make('title'),
+                    ])
+                    ->columnSpanFull(),
                 TextEntry::make('created_at')
                     ->dateTime()
                     ->placeholder('-'),
