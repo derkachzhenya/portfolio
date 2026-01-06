@@ -3,8 +3,9 @@
 namespace App\Filament\Resources\Users\Schemas;
 
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 
 class UserForm
@@ -14,17 +15,33 @@ class UserForm
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->label('Имя')
+                    ->label('First name')
                     ->required(),
                 TextInput::make('surname')
-                    ->label('Фамилия'),
+                    ->label('Last name'),
                 TextInput::make('position')
-                    ->label('Должность'),
+                    ->label('Position'),
                 Textarea::make('description')
-                    ->label('О себе')
+                    ->label('About')
                     ->columnSpanFull(),
                 Textarea::make('interests')
-                    ->label('Интересы')
+                    ->label('Interests')
+                    ->columnSpanFull(),
+                FileUpload::make('image')
+                    ->label('Image')
+                    ->columnSpanFull()
+                    ->image(),
+                TextInput::make('linkedin')
+                    ->label('LinkedIn')
+                    ->columnSpanFull(),
+                TextInput::make('github')
+                    ->label('GitHub')
+                    ->columnSpanFull(),
+                TextInput::make('gitlab')
+                    ->label('GitLab')
+                    ->columnSpanFull(),
+                TextInput::make('telegram')
+                    ->label('Telegram')
                     ->columnSpanFull(),
             ]);
     }

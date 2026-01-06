@@ -15,31 +15,30 @@ class EducationExporter extends Exporter
     {
         return [
             ExportColumn::make('title')
-                ->label('Название'),
+                ->label('Title'),
             ExportColumn::make('qualification')
-                ->label('Квалификация'),
+                ->label('Qualification'),
             ExportColumn::make('program_name')
-                ->label('Название программы'),
+                ->label('Program name'),
             ExportColumn::make('date_from')
-                ->label('Дата начала'),
+                ->label('Start date'),
             ExportColumn::make('date_to')
-                ->label('Дата окончания'),
+                ->label('End date'),
             ExportColumn::make('created_at')
-                ->label('Создано'),
+                ->label('Created at'),
             ExportColumn::make('updated_at')
-                ->label('Обновлено'),
+                ->label('Updated at'),
         ];
     }
 
     public static function getCompletedNotificationBody(Export $export): string
     {
-        $body = 'Экспорт образования завершен. ' . number_format($export->successful_rows) . ' записей экспортировано.';
+        $body = 'Education export completed. ' . number_format($export->successful_rows) . ' rows exported.';
 
         if ($failedRowsCount = $export->getFailedRowsCount()) {
-            $body .= ' ' . number_format($failedRowsCount) . ' записей не удалось экспортировать.';
+            $body .= ' ' . number_format($failedRowsCount) . ' rows failed to export.';
         }
 
         return $body;
     }
 }
-

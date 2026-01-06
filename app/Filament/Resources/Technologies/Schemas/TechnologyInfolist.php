@@ -18,7 +18,7 @@ class TechnologyInfolist
                     ->height(120)
                     ->columnSpanFull(),
                 TextEntry::make('icon')
-                    ->label('Путь')
+                    ->label('Path')
                     ->columnSpanFull(),
                 TextEntry::make('created_at')
                     ->dateTime()

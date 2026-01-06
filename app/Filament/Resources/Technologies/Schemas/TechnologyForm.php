@@ -15,7 +15,7 @@ class TechnologyForm
                 TextInput::make('title')
                     ->required(),
                 FileUpload::make('icon')
-                    ->label('Иконка')
+                    ->label('Icon')
                     ->image()
                     ->directory('technologies/icons')
                     ->disk('public')

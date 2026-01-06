@@ -25,6 +25,11 @@ class User extends Authenticatable
         'interests',
         'email',
         'password',
+        'image',
+        'linkedin',
+        'github',
+        'gitlab',
+        'telegram',
     ];
 
     /**

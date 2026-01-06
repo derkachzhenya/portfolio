@@ -1,0 +1,569 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Portfolio API",
+        "description": "API documentation for the portfolio project",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "Local development server"
+        }
+    ],
+    "paths": {
+        "/api/experiences": {
+            "get": {
+                "tags": [
+                    "Experiences"
+                ],
+                "summary": "List experiences",
+                "operationId": "857d2fcc32f3ee91cc5712a86b611d94",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Experience"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/experiences/{experience}": {
+            "get": {
+                "tags": [
+                    "Experiences"
+                ],
+                "summary": "Get experience by id",
+                "operationId": "25ae5765bbea39c31dc6ee5a577ea5f8",
+                "parameters": [
+                    {
+                        "name": "experience",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Experience"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/projects": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "List projects",
+                "operationId": "fbc21feeb3df8a2cb519efb6480ae7d9",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Project"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/projects/{project}": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Get project by id",
+                "operationId": "5dffe8ed14d1a7d4bb6a0296b271e96d",
+                "parameters": [
+                    {
+                        "name": "project",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Project"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/technologies": {
+            "get": {
+                "tags": [
+                    "Technologies"
+                ],
+                "summary": "List technologies",
+                "operationId": "1ed74b6dc36c856330c965c6f5a9f056",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Technology"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/technologies/{technology}": {
+            "get": {
+                "tags": [
+                    "Technologies"
+                ],
+                "summary": "Get technology by id",
+                "operationId": "4b28db09cbe03b931c27c3fc0b790af3",
+                "parameters": [
+                    {
+                        "name": "technology",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Technology"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/trainings": {
+            "get": {
+                "tags": [
+                    "Trainings"
+                ],
+                "summary": "List trainings",
+                "operationId": "7ad19f15e99a01de694b359ae175cf99",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Training"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/trainings/{training}": {
+            "get": {
+                "tags": [
+                    "Trainings"
+                ],
+                "summary": "Get training by id",
+                "operationId": "8f2917eb966a0b4b8ab1e221e2ae343e",
+                "parameters": [
+                    {
+                        "name": "training",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Training"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "List users",
+                "operationId": "566aed8efb436ca506e0ef51a032ecd9",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{user}": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user by id",
+                "operationId": "f310aa35b9243239c65dbc8b8f4b135e",
+                "parameters": [
+                    {
+                        "name": "user",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not found"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Experience": {
+                "properties": {
+                    "id": {
+                        "description": "Identifier",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "position": {
+                        "description": "Position",
+                        "type": "string",
+                        "example": "Backend Developer"
+                    },
+                    "short_description": {
+                        "description": "Short description",
+                        "type": "string",
+                        "example": "Working on APIs and integrations",
+                        "nullable": true
+                    },
+                    "date_from": {
+                        "description": "Start date",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2023-01-01"
+                    },
+                    "date_to": {
+                        "description": "End date",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-01-01"
+                    },
+                    "company_name": {
+                        "description": "Company",
+                        "type": "string",
+                        "example": "Acme Inc",
+                        "nullable": true
+                    },
+                    "technologies": {
+                        "description": "Technologies list",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Technology"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "Project": {
+                "properties": {
+                    "id": {
+                        "description": "Identifier",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "Project title",
+                        "type": "string",
+                        "example": "Portfolio"
+                    },
+                    "description": {
+                        "description": "Description",
+                        "type": "string",
+                        "example": "Business card site with admin panel",
+                        "nullable": true
+                    },
+                    "link": {
+                        "description": "Project link",
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com",
+                        "nullable": true
+                    },
+                    "image": {
+                        "description": "Image URL",
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/storage/projects/1.png",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Technology": {
+                "properties": {
+                    "id": {
+                        "description": "Identifier",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "Technology name",
+                        "type": "string",
+                        "example": "Laravel"
+                    },
+                    "icon": {
+                        "description": "Icon URL",
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/storage/icons/laravel.svg",
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
+            "Training": {
+                "properties": {
+                    "id": {
+                        "description": "Identifier",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "title": {
+                        "description": "Title",
+                        "type": "string",
+                        "example": "AWS Certified Developer"
+                    },
+                    "qualification": {
+                        "description": "Qualification/degree",
+                        "type": "string",
+                        "example": "Associate",
+                        "nullable": true
+                    },
+                    "program_name": {
+                        "description": "Program name",
+                        "type": "string",
+                        "example": "Cloud Practitioner",
+                        "nullable": true
+                    },
+                    "date_from": {
+                        "description": "Start date",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-01-01",
+                        "nullable": true
+                    },
+                    "date_to": {
+                        "description": "End date",
+                        "type": "string",
+                        "format": "date",
+                        "example": "2024-03-31",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-05T12:34:56Z"
+                    },
+                    "updated_at": {
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-06T08:00:00Z"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "properties": {
+                    "id": {
+                        "description": "Identifier",
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "name": {
+                        "description": "First name",
+                        "type": "string",
+                        "example": "John"
+                    },
+                    "surname": {
+                        "description": "Last name",
+                        "type": "string",
+                        "example": "Doe"
+                    },
+                    "position": {
+                        "description": "Position",
+                        "type": "string",
+                        "example": "Backend Developer",
+                        "nullable": true
+                    },
+                    "description": {
+                        "description": "About",
+                        "type": "string",
+                        "example": "Polyglot developer with 5+ years of experience",
+                        "nullable": true
+                    },
+                    "interests": {
+                        "description": "Interests",
+                        "type": "string",
+                        "example": "Laravel, Docker, chess",
+                        "nullable": true
+                    },
+                    "image": {
+                        "description": "Image URL",
+                        "type": "string",
+                        "format": "uri",
+                        "example": "https://example.com/storage/avatars/1.png",
+                        "nullable": true
+                    },
+                    "linkedin": {
+                        "description": "LinkedIn URL",
+                        "type": "string",
+                        "example": "https://www.linkedin.com/in/john-doe",
+                        "nullable": true
+                    },
+                    "github": {
+                        "description": "GitHub URL",
+                        "type": "string",
+                        "example": "https://github.com/johndoe",
+                        "nullable": true
+                    },
+                    "gitlab": {
+                        "description": "GitLab URL",
+                        "type": "string",
+                        "example": "https://gitlab.com/johndoe",
+                        "nullable": true
+                    },
+                    "telegram": {
+                        "description": "Telegram",
+                        "type": "string",
+                        "example": "@johndoe",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "description": "Created at",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-05T12:34:56Z"
+                    },
+                    "updated_at": {
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-01-06T08:00:00Z"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Experiences",
+            "description": "Experiences"
+        },
+        {
+            "name": "Projects",
+            "description": "Projects"
+        },
+        {
+            "name": "Technologies",
+            "description": "Technologies"
+        },
+        {
+            "name": "Trainings",
+            "description": "Trainings"
+        },
+        {
+            "name": "Users",
+            "description": "Users"
+        }
+    ]
+}

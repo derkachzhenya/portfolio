@@ -2,12 +2,15 @@
 
 namespace App\Filament\Resources\Users\Tables;
 
+use App\Models\User;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class UsersTable
 {
@@ -21,12 +24,6 @@ class UsersTable
                     ->searchable(),
                 TextColumn::make('position')
                     ->searchable(),
-                TextColumn::make('email')
-                    ->label('Email address')
-                    ->searchable(),
-                TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -35,6 +32,15 @@ class UsersTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                ImageColumn::make('image'),
+                TextColumn::make('linkedin')
+                    ->placeholder('-'),
+                TextColumn::make('github')
+                    ->placeholder('-'),
+                TextColumn::make('gitlab')
+                    ->placeholder('-'),
+                TextColumn::make('telegram')
+                    ->placeholder('-'),
             ])
             ->filters([
                 //

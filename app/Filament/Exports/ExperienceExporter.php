@@ -15,31 +15,30 @@ class ExperienceExporter extends Exporter
     {
         return [
             ExportColumn::make('position')
-                ->label('Должность'),
+                ->label('Position'),
             ExportColumn::make('company_name')
-                ->label('Компания'),
+                ->label('Company'),
             ExportColumn::make('date_from')
-                ->label('Дата начала'),
+                ->label('Start date'),
             ExportColumn::make('date_to')
-                ->label('Дата окончания'),
+                ->label('End date'),
             ExportColumn::make('short_description')
-                ->label('Описание'),
+                ->label('Description'),
             ExportColumn::make('created_at')
-                ->label('Создано'),
+                ->label('Created at'),
             ExportColumn::make('updated_at')
-                ->label('Обновлено'),
+                ->label('Updated at'),
         ];
     }
 
     public static function getCompletedNotificationBody(Export $export): string
     {
-        $body = 'Экспорт опыта работы завершен. ' . number_format($export->successful_rows) . ' записей экспортировано.';
+        $body = 'Experience export completed. ' . number_format($export->successful_rows) . ' rows exported.';
 
         if ($failedRowsCount = $export->getFailedRowsCount()) {
-            $body .= ' ' . number_format($failedRowsCount) . ' записей не удалось экспортировать.';
+            $body .= ' ' . number_format($failedRowsCount) . ' rows failed to export.';
         }
 
         return $body;
     }
 }
-
