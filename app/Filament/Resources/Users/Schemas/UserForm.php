@@ -29,8 +29,10 @@ class UserForm
                     ->columnSpanFull(),
                 FileUpload::make('image')
                     ->label('Image')
-                    ->columnSpanFull()
-                    ->image(),
+                    ->image()
+                    ->disk('public')
+                    ->directory('users')
+                    ->columnSpanFull(),
                 TextInput::make('linkedin')
                     ->label('LinkedIn')
                     ->columnSpanFull(),

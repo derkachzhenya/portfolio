@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use OpenApi\Attributes as OA;
 
 #[OA\Schema(
@@ -42,7 +43,7 @@ class UserResource extends JsonResource
             'position' => $this->position,
             'description' => $this->description,
             'interests' => $this->interests,
-            'image' => $this->image ? Storage::disk('public')->url($this->image) : null,
+            'image' => $this->resolveImageUrl(),
             'linkedin' => $this->linkedin,
             'github' => $this->github,
             'gitlab' => $this->gitlab,
@@ -50,5 +51,22 @@ class UserResource extends JsonResource
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
+    }
+
+    /**
+     * Возвращает корректный URL аватара: если в БД уже лежит абсолютный URL,
+     * отдаём его как есть; иначе — строим ссылку через публичный диск.
+     */
+    private function resolveImageUrl(): ?string
+    {
+        if (!$this->image) {
+            return null;
+        }
+
+        $isAbsolute = Str::startsWith($this->image, ['http://', 'https://']);
+
+        return $isAbsolute
+            ? $this->image
+            : Storage::disk('public')->url($this->image);
     }
 }

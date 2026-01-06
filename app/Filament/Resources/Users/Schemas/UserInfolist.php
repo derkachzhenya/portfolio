@@ -29,7 +29,8 @@ class UserInfolist
                 TextEntry::make('updated_at')
                     ->dateTime()
                     ->placeholder('-'),
-                ImageEntry::make('image'),
+                ImageEntry::make('image')
+                    ->disk('public'),
                 TextEntry::make('linkedin')
                     ->placeholder('-'),
                 TextEntry::make('github')
